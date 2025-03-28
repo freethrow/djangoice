@@ -1,0 +1,104 @@
+{% extends "eventi/base.html" %}
+{% block title %}Report degli Eventi{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Report degli Eventi</h2>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if events %}
+                <div class="alert alert-info">
+                    <strong>Riepilogo Report:</strong>
+                    <ul>
+                        <li>Totale Eventi: {{ total_events }}</li>
+                        <li>Data Report: {{ report_date }}</li>
+                    </ul>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Titolo</th>
+                                <th>Categoria</th>
+                                <th>Data Inizio</th>
+                                <th>Data Fine</th>
+                                <th>Paese</th>
+                                <th>Città</th>
+                                <th>Settore</th>
+                                <th>Tipologia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for event in events %}
+                            <tr>
+                                <td>{{ event.titolo }}</td>
+                                <td>{{ event.categoria }}</td>
+                                <td>{{ event.data_inizio|date:"d/m/Y" }}</td>
+                                <td>{{ event.data_fine|date:"d/m/Y"|default_if_none:"-" }}</td>
+                                <td>{{ event.paese }}</td>
+                                <td>{{ event.citta }}</td>
+                                <td>{{ event.settore }}</td>
+                                <td>{{ event.tipologia }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{% url 'report_selection' %}" class="btn btn-secondary">
+                            Nuova Selezione
+                        </a>
+                        <form method="post" action="{% url 'generate_report' %}" class="d-inline">
+                            {% csrf_token %}
+                            {% for event in events %}
+                                <input type="hidden" name="event_ids" value="{{ event.id }}">
+                            {% endfor %}
+                            <button type="submit" name="export_format" value="docx" class="btn btn-primary mr-2">
+                                Esporta DOCX
+                            </button>
+                            <button type="submit" name="export_format" value="pdf" class="btn btn-info">
+                                Esporta PDF
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    Nessun evento trovato per questo report.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Optional: Add any interactive features or confirmations for export buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        const exportButtons = document.querySelectorAll('button[name="export_format"]');
+        exportButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const format = this.value;
+                const confirmMessage = `Vuoi esportare il report in formato ${format.toUpperCase()}?`;
+                if (!confirm(confirmMessage)) {
+                    e.preventDefault();
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

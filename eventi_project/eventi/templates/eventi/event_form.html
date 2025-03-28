@@ -1,0 +1,206 @@
+{% extends 'eventi/base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block title %}{% if form.instance.pk %}{% trans "Modifica Evento" %}{% else %}{% trans "Crea Nuovo Evento" %}{% endif %}{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Page header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">
+            {% if form.instance.pk %}
+                {% trans "Modifica Evento" %}
+            {% else %}
+                {% trans "Crea Nuovo Evento" %}
+            {% endif %}
+        </h1>
+        <p class="mt-2 text-sm text-gray-600">
+            {% if form.instance.pk %}
+                {% trans "Aggiorna i dettagli dell'evento esistente." %}
+            {% else %}
+                {% trans "Inserisci i dettagli per creare un nuovo evento." %}
+            {% endif %}
+        </p>
+    </div>
+<!-- Form card -->
+<div class="bg-white shadow-xl rounded-xl overflow-hidden">
+    <div class="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+    
+    <div class="p-8">
+        <form method="post" enctype="multipart/form-data" class="space-y-8">
+            {% csrf_token %}
+            
+            {% if form.non_field_errors %}
+            <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-md">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% for field in form.hidden_fields %}
+                {{ field }}
+            {% endfor %}
+            
+            <!-- Main Form -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <!-- Title field -->
+                <div class="md:col-span-2">
+                    <label for="{{ form.titolo.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.titolo.label }}{% if form.titolo.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.titolo class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                    {% for error in form.titolo.errors %}
+                        <p class="text-red-600 text-sm">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Category and Office -->
+                <div>
+                    <label for="{{ form.categoria.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.categoria.label }}{% if form.categoria.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.categoria class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.office.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.office.label }}{% if form.office.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.office class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                </div>
+
+                <!-- Dates section -->
+                <div class="md:col-span-2">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                        {% trans "Date e luogo" %}
+                    </h2>
+                </div>
+                
+                <!-- Dates -->
+                <div>
+                    <label for="{{ form.data_inizio.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.data_inizio.label }}{% if form.data_inizio.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.data_inizio class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 pl-10" %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.data_fine.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.data_fine.label }}{% if form.data_fine.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.data_fine class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 pl-10" %}
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <label for="{{ form.paese.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.paese.label }}{% if form.paese.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.paese class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.citta.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.citta.label }}{% if form.citta.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.citta class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                </div>
+
+                <!-- Additional details -->
+                <div class="md:col-span-2">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                        {% trans "Dettagli aggiuntivi" %}
+                    </h2>
+                </div>
+
+                <!-- Sector and Type -->
+                <div>
+                    <label for="{{ form.settore.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.settore.label }}{% if form.settore.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.settore class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.tipologia.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.tipologia.label }}{% if form.tipologia.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.tipologia class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                </div>
+
+                <!-- Description -->
+                <div class="md:col-span-2">
+                    <label for="{{ form.descrizione.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.descrizione.label }}{% if form.descrizione.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.descrizione class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %}
+                </div>
+
+                <!-- Public checkbox -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center">
+                        {% render_field form.public class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %}
+                        <label for="{{ form.public.id_for_label }}" class="ml-2 block text-sm text-gray-900">
+                            {{ form.public.label }}
+                        </label>
+                    </div>
+                </div>
+
+                <!-- File upload -->
+                {% if form.files %}
+                <div class="md:col-span-2">
+                    <label for="{{ form.files.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ form.files.label }}{% if form.files.field.required %} <span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {% render_field form.files class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Existing files -->
+            {% if event_files %}
+            <div class="mt-8">
+                <h3 class="text-lg font-medium text-gray-900 mb-3">{% trans "File esistenti" %}</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {% for file in event_files %}
+                        <li class="bg-gray-50 px-4 py-3 rounded-lg border border-gray-200">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="font-medium">{{ file.title }}</p>
+                                    {% if file.description %}
+                                        <p class="text-sm text-gray-600 mt-1">{{ file.description }}</p>
+                                    {% endif %}
+                                    <p class="text-xs text-gray-500 mt-2">{% trans "Caricato il" %} {{ file.created_at|date:"d/m/Y" }}</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <a href="{{ file.file.url }}" class="text-blue-600 hover:text-blue-800" target="_blank">{% trans "Scarica" %}</a>
+                                    <form method="post" action="{% url 'delete_file' event.id file.id %}" class="inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="text-red-600 hover:text-red-800">{% trans "Elimina" %}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            <!-- Form actions -->
+            <div class="pt-8 border-t border-gray-200 flex justify-end space-x-4">
+                <a href="{% url 'event_list' %}" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    {% trans "Annulla" %}
+                </a>
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    {% if form.instance.pk %}
+                        {% trans "Aggiorna" %}
+                    {% else %}
+                        {% trans "Salva" %}
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

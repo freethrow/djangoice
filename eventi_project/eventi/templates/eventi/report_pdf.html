@@ -1,0 +1,39 @@
+{% extends "eventi/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Report degli Eventi" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-blue-600 text-white px-6 py-4">
+            <h3 class="text-xl font-bold">{% trans "Report degli Eventi" %}</h3>
+        </div>
+        <div class="p-6">
+            {% if success %}
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
+                    <p>{% trans "Il report è stato generato con successo." %}</p>
+                </div>
+                <p class="mb-4">{% trans "Puoi scaricare il report dal link qui sotto:" %}</p>
+                <a href="{{ report_url }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    {% trans "Scarica Report" %}
+                </a>
+            {% else %}
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
+                    <p>{% trans "Si è verificato un errore durante la generazione del report." %}</p>
+                </div>
+                <p class="mb-4">{{ error_message }}</p>
+                <a href="{% url 'report_selection' %}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    {% trans "Torna alla selezione" %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

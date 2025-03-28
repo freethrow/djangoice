@@ -1,0 +1,46 @@
+{% extends 'eventi/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Conferma eliminazione file" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="px-6 py-4 bg-red-600 text-white">
+            <h1 class="text-2xl font-bold">{% trans "Elimina File" %}</h1>
+        </div>
+        
+        <div class="p-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-6">
+                    <p class="text-gray-700">
+                        {% trans "Sei sicuro di voler eliminare il file" %} 
+                        <strong>{{ object.title }}</strong> 
+                        {% trans "dall'evento" %} 
+                        <strong>{{ object.event.titolo }}</strong>?
+                    </p>
+                    <p class="text-sm text-gray-500 mt-2">
+                        {% trans "Questa azione non può essere annullata." %}
+                    </p>
+                </div>
+                
+                <div class="flex space-x-2">
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                        {% trans "Conferma Eliminazione" %}
+                    </button>
+                    <a href="{% url 'event_detail' pk=object.event.id %}" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        {% trans "Annulla" %}
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
