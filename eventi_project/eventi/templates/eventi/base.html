@@ -1,163 +1,95 @@
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="it" class="h-full">
+<html lang="it" data-theme="lemonade" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Eventi{% endblock %}</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS and DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
-    <!-- Heroicons -->
-    <script src="https://unpkg.com/heroicons@2.1.1/dist/heroicons.js"></script>
-    
-    <!-- Custom Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            DEFAULT: '#3b82f6',
-                            hover: '#2563eb'
-                        },
-                        secondary: {
-                            DEFAULT: '#6b7280',
-                            hover: '#4b5563'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Fix for Alpine.js flickering -->
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
     
     {% block extra_head %}{% endblock %}
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen">
     <!-- Navigation -->
-    <nav x-data="{ open: false }" class="bg-blue-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <a href="{% url 'event_list' %}" class="text-white font-bold text-xl">
-                        {% trans "Eventi ITA Belgrado" %}
-                    </a>
-                    
-                    <!-- Desktop Navigation -->
-                    <div class="ml-10 flex items-baseline space-x-4 max-md:hidden">
-                        <a href="{% url 'event_list' %}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">
-                            {% trans "Eventi" %}
-                        </a>
+    <nav x-data="{ open: false }">
+        <div class="navbar bg-base-100">
+            <!-- Left side - only title -->
+            <div class="navbar-start">
+                <a href="{% url 'event_list' %}" class="btn btn-ghost text-xl">{% trans "Eventi ITA Belgrado" %}</a>
+            </div>
+            
+            <!-- Right side - all other elements -->
+            <div class="navbar-end">
+                <!-- Desktop navigation links -->
+                <div class="hidden lg:flex mr-4">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a href="{% url 'event_list' %}" class="font-bold">{% trans "Eventi" %}</a></li>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'event_create' %}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">
-                                {% trans "Crea Evento" %}
-                            </a>
-                            <a href="{% url 'report_selection' %}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">
-                                {% trans "Genera Report" %}
-                            </a>
+                            <li><a href="{% url 'event_create' %}" class="font-bold">{% trans "Crea Evento" %}</a></li>
+                            <li><a href="{% url 'report_selection' %}" class="font-bold">{% trans "Genera Report" %}</a></li>
                         {% endif %}
-                    </div>
+                    </ul>
                 </div>
                 
-                <!-- User Menu -->
-                <div class="ml-4 flex items-center md:ml-6">
-                    {% if user.is_authenticated %}
-                        <div x-data="{ dropdownOpen: false }" class="relative">
-                            <button 
-                                @click="dropdownOpen = !dropdownOpen"
-                                class="max-md:hidden bg-blue-700 text-white px-3 py-2 rounded-md hover:bg-blue-800 focus:outline-none"
-                            >
-                                {{ user.username }}
-                            </button>
-                            
-                            <div 
-                                x-show="dropdownOpen" 
-                                @click.away="dropdownOpen = false"
-                                x-transition 
-                                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 divide-y divide-gray-100"
-                            >
-                                {% if user.is_staff %}
-                                    <a href="{% url 'admin:index' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                        {% trans "Admin" %}
-                                    </a>
-                                {% endif %}
+                <!-- User authentication section -->
+                {% if user.is_authenticated %}
+                    <div class="dropdown dropdown-end">
+                        <div tabindex="0" role="button" class="btn">{{ user.username }}</div>
+                        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                            {% if user.is_staff %}
+                                <li><a href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+                            {% endif %}
+                            <li>
                                 <form method="post" action="{% url 'logout' %}">
                                     {% csrf_token %}
-                                    <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                        {% trans "Esci" %}
-                                    </button>
+                                    <button type="submit" class="w-full text-left">{% trans "Esci" %}</button>
                                 </form>
-                            </div>
-                        </div>
-                    {% else %}
-                        <a href="{% url 'login' %}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">
-                            {% trans "Accedi" %}
-                        </a>
-                    {% endif %}
-                    
-                    <!-- Mobile Menu Button -->
-                    <button 
-                        @click="open = !open" 
-                        class="md:hidden ml-3 bg-blue-700 inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-800 focus:outline-none"
-                    >
-                        <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            </li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn">{% trans "Accedi" %}</a>
+                {% endif %}
+                
+                <!-- Mobile menu button -->
+                <div class="dropdown dropdown-end lg:hidden ml-2">
+                    <div tabindex="0" role="button" class="btn btn-ghost" @click="open = !open">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
-                        <svg x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+                    </div>
+                    <ul tabindex="0" x-show="open" @click.away="open = false" x-cloak class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a href="{% url 'event_list' %}" class="font-bold">{% trans "Eventi" %}</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'event_create' %}" class="font-bold">{% trans "Crea Evento" %}</a></li>
+                            <li><a href="{% url 'report_selection' %}" class="font-bold">{% trans "Genera Report" %}</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div 
-            x-show="open" 
-            x-transition 
-            class="md:hidden"
-        >
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="{% url 'event_list' %}" class="text-white block hover:bg-blue-700 px-3 py-2 rounded-md">
-                    {% trans "Eventi ITA Belgrado" %}
-                </a>
-                {% if user.is_authenticated %}
-                    <a href="{% url 'event_create' %}" class="text-white block hover:bg-blue-700 px-3 py-2 rounded-md">
-                        {% trans "Crea Evento" %}
-                    </a>
-                    <a href="{% url 'report_selection' %}" class="text-white block hover:bg-blue-700 px-3 py-2 rounded-md">
-                        {% trans "Genera Report" %}
-                    </a>
-                    <form method="post" action="{% url 'logout' %}" class="block">
-                        {% csrf_token %}
-                        <button type="submit" class="w-full text-left text-white hover:bg-blue-700 px-3 py-2 rounded-md">
-                            {% trans "Esci" %}
-                        </button>
-                    </form>
-                {% else %}
-                    <a href="{% url 'login' %}" class="text-white block hover:bg-blue-700 px-3 py-2 rounded-md">
-                        {% trans "Accedi" %}
-                    </a>
-                {% endif %}
             </div>
         </div>
     </nav>
-
     <!-- Messages -->
     {% if messages %}
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+        <div class="container mx-auto px-4 pt-4">
             {% for message in messages %}
-                <div class="
-                    {% if message.tags == 'success' %}bg-green-100 text-green-800
-                    {% elif message.tags == 'error' %}bg-red-100 text-red-800
-                    {% elif message.tags == 'warning' %}bg-yellow-100 text-yellow-800
-                    {% else %}bg-blue-100 text-blue-800
-                    {% endif %}
-                    px-4 py-3 rounded relative" role="alert">
+                <div class="alert 
+                    {% if message.tags == 'success' %}alert-success
+                    {% elif message.tags == 'error' %}alert-error
+                    {% elif message.tags == 'warning' %}alert-warning
+                    {% else %}alert-info
+                    {% endif %} mb-4">
                     {{ message }}
                 </div>
             {% endfor %}
@@ -165,14 +97,15 @@
     {% endif %}
 
     <!-- Content -->
-    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="flex-grow container mx-auto px-4 py-6">
+        <h3>Username: <span class="font-bold">marko</span> Password: <span class="font-bold">marko123</span></h3>
         {% block content %}{% endblock %}
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white py-6 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-            <p>&copy; 2024 {% trans "Gestione Eventi" %}. {% trans "Tutti i diritti riservati." %}</p>
+    <footer class="footer footer-center p-4 bg-base-200 text-base-content">
+        <div>
+            <p>&copy; 2024 {% trans "Aleksendrić" %}. {% trans "Tutti i diritti riservati." %}</p>
         </div>
     </footer>
 

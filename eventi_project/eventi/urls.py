@@ -34,7 +34,7 @@ urlpatterns = [
     # Report URLs
     path("report/", views.ReportSelectionView.as_view(), name="report_selection"),
     path("report/genera/", views.GenerateReportView.as_view(), name="generate_report"),
-    path("check-storage/", views.check_storage, name="check_storage"),
+    #path("check-storage/", views.check_storage, name="check_storage"),
     path("reports/files/", views.ReportFileListView.as_view(), name="report_files"),
     path(
         "reports/files/download/",

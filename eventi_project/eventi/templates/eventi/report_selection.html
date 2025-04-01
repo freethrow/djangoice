@@ -5,22 +5,22 @@
 {% block title %}{% trans "Genera Report" %}{% endblock %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div class="container mx-auto py-6">
     <div class="mb-6">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">{% trans "Genera Report" %}</h1>
-        <p class="text-lg text-gray-600">{% trans "Seleziona gli eventi da includere nel report e il formato di esportazione." %}</p>
+        <h1 class="text-3xl font-bold mb-2">{% trans "Genera Report" %}</h1>
+        <p class="text-lg opacity-70">{% trans "Seleziona gli eventi da includere nel report e il formato di esportazione." %}</p>
     </div>
     
     <div class="mb-6">
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
-            <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
-                <h2 class="text-xl font-semibold text-gray-800">{% trans "Filtri" %}</h2>
-            </div>
-            <div class="p-6">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">{% trans "Filtri" %}</h2>
                 <form method="get" action="{% url 'report_selection' %}" class="grid md:grid-cols-3 gap-6">
-                    <div>
-                        <label for="categoria" class="block text-sm font-medium text-gray-700 mb-1">{% trans "Categoria" %}</label>
-                        <select name="categoria" id="categoria" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Categoria" %}</span>
+                        </label>
+                        <select name="categoria" id="categoria" class="select select-bordered w-full">
                             <option value="">{% trans "Tutte le categorie" %}</option>
                             {% for value, label in categorias %}
                                 <option value="{{ value }}" {% if active_filters.categoria == value %}selected{% endif %}>{{ label }}</option>
@@ -28,9 +28,11 @@
                         </select>
                     </div>
                     
-                    <div>
-                        <label for="paese" class="block text-sm font-medium text-gray-700 mb-1">{% trans "Paese" %}</label>
-                        <select name="paese" id="paese" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Paese" %}</span>
+                        </label>
+                        <select name="paese" id="paese" class="select select-bordered w-full">
                             <option value="">{% trans "Tutti i paesi" %}</option>
                             {% for value, label in paesi %}
                                 <option value="{{ value }}" {% if active_filters.paese == value %}selected{% endif %}>{{ label }}</option>
@@ -38,9 +40,11 @@
                         </select>
                     </div>
                     
-                    <div>
-                        <label for="year" class="block text-sm font-medium text-gray-700 mb-1">{% trans "Anno" %}</label>
-                        <select name="year" id="year" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Anno" %}</span>
+                        </label>
+                        <select name="year" id="year" class="select select-bordered w-full">
                             <option value="">{% trans "Tutti gli anni" %}</option>
                             {% for year in years %}
                                 <option value="{{ year }}" {% if active_filters.year == year|stringformat:"i" %}selected{% endif %}>{{ year }}</option>
@@ -49,14 +53,14 @@
                     </div>
                     
                     <div class="md:col-span-3 flex justify-end space-x-2">
-                        <a href="{% url 'report_selection' %}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <a href="{% url 'report_selection' %}" class="btn btn-outline gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
                             {% trans "Reimposta" %}
                         </a>
-                        <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <button type="submit" class="btn btn-primary text-white gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                             </svg>
                             {% trans "Filtra" %}
@@ -71,106 +75,114 @@
         {% csrf_token %}
         
         <div class="mb-6">
-            <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <div class="px-6 py-4 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
-                    <h2 class="text-xl font-semibold text-gray-800">{% trans "Eventi disponibili" %}</h2>
-                    <div class="flex items-center">
-                        <input class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" type="checkbox" id="select-all">
-                        <label class="ml-2 text-sm text-gray-700" for="select-all">
-                            {% trans "Seleziona tutti" %}
-                        </label>
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body p-0">
+                    <div class="px-6 py-4 bg-base-200 flex justify-between items-center">
+                        <h2 class="card-title">{% trans "Eventi disponibili" %}</h2>
+                        <div class="form-control">
+                            <label class="label cursor-pointer">
+                                <input class="checkbox" type="checkbox" id="select-all">
+                                <span class="label-text ml-2">{% trans "Seleziona tutti" %}</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
-                
-                <div>
-                    {% if events %}
-                        <div class="overflow-x-auto">
-                            <table class="w-full border-collapse table-fixed">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="w-12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
-                                        <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{% trans "Titolo" %}</th>
-                                        <th class="w-1/5 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{% trans "Data" %}</th>
-                                        <th class="w-1/5 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{% trans "Luogo" %}</th>
-                                        <th class="w-1/5 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{% trans "Categoria" %}</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    {% for event in events %}
-                                        <tr class="hover:bg-gray-50 transition duration-150">
-                                            <td class="px-6 py-4 text-center">
-                                                <input class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 event-checkbox" type="checkbox" name="event_ids" value="{{ event.id }}" id="event-{{ event.id }}">
-                                            </td>
-                                            <td class="px-6 py-4 break-words">
-                                                <label for="event-{{ event.id }}" class="block cursor-pointer text-sm font-medium text-gray-900 hover:text-blue-600">
-                                                    {{ event.titolo }}
-                                                </label>
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                {{ event.data_inizio|date:"d/m/Y" }}
-                                                {% if event.data_fine and event.data_fine != event.data_inizio %}
-                                                    - {{ event.data_fine|date:"d/m/Y" }}
-                                                {% endif %}
-                                            </td>
-                                            <td class="px-6 py-4 break-words">{{ event.citta }}, {{ event.paese }}</td>
-                                            <td class="px-6 py-4">
-                                                <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
-                                                    {{ event.categoria }}
-                                                </span>
-                                            </td>
+                    
+                    <div>
+                        {% if events %}
+                            <div class="overflow-x-auto">
+                                <table class="table table-zebra w-full">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-12"></th>
+                                            <th class="w-1/3">{% trans "Titolo" %}</th>
+                                            <th class="w-1/5">{% trans "Data" %}</th>
+                                            <th class="w-1/5">{% trans "Luogo" %}</th>
+                                            <th class="w-1/5">{% trans "Categoria" %}</th>
                                         </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    {% else %}
-                        <div class="p-6 text-center">
-                            <p class="text-gray-500">{% trans "Nessun evento trovato con i filtri selezionati." %}</p>
-                        </div>
-                    {% endif %}
+                                    </thead>
+                                    <tbody>
+                                        {% for event in events %}
+                                            <tr>
+                                                <td class="text-center">
+                                                    <input class="checkbox event-checkbox" type="checkbox" name="event_ids" value="{{ event.id }}" id="event-{{ event.id }}">
+                                                </td>
+                                                <td class="break-words">
+                                                    <label for="event-{{ event.id }}" class="block cursor-pointer font-medium hover:text-primary">
+                                                        {{ event.titolo }}
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    {{ event.data_inizio|date:"d/m/Y" }}
+                                                    {% if event.data_fine and event.data_fine != event.data_inizio %}
+                                                        - {{ event.data_fine|date:"d/m/Y" }}
+                                                    {% endif %}
+                                                </td>
+                                                <td class="break-words">{{ event.citta }}, {{ event.paese }}</td>
+                                                <td>
+                                                    <span class="break-words">
+                                                        {{ event.categoria }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="p-6 text-center opacity-70">
+                                <p>{% trans "Nessun evento trovato con i filtri selezionati." %}</p>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="mb-6">
-            <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
-                    <h2 class="text-xl font-semibold text-gray-800">{% trans "Opzioni di esportazione" %}</h2>
-                </div>
-                <div class="p-6">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">{% trans "Opzioni di esportazione" %}</h2>
                     <div class="md:w-1/2">
                         <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">{% trans "Formato" %}</label>
-                            <div class="space-y-2">
-                                <div class="flex items-center">
-                                    <input class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" type="radio" name="export_format" id="format-docx" value="docx" checked>
-                                    <label class="ml-2 text-sm text-gray-700 flex items-center" for="format-docx">
-                                        <svg class="w-5 h-5 mr-1 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                        </svg>
-                                        {% trans "Word (DOCX)" %}
+                            <label class="label">
+                                <span class="label-text font-medium">{% trans "Formato" %}</span>
+                            </label>
+                            <div class="flex flex-col gap-2">
+                                <div class="form-control">
+                                    <label class="label cursor-pointer justify-start">
+                                        <input class="radio radio-primary" type="radio" name="export_format" id="format-docx" value="docx" checked>
+                                        <span class="label-text ml-2 flex items-center">
+                                            <svg class="w-5 h-5 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                            </svg>
+                                            {% trans "Word (DOCX)" %}
+                                        </span>
                                     </label>
                                 </div>
-                                <div class="flex items-center">
-                                    <input class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" type="radio" name="export_format" id="format-excel" value="excel">
-                                    <label class="ml-2 text-sm text-gray-700 flex items-center" for="format-excel">
-                                        <svg class="w-5 h-5 mr-1 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                        </svg>
-                                        {% trans "Excel (XLSX)" %}
+                                <div class="form-control">
+                                    <label class="label cursor-pointer justify-start">
+                                        <input class="radio radio-primary" type="radio" name="export_format" id="format-excel" value="excel">
+                                        <span class="label-text ml-2 flex items-center">
+                                            <svg class="w-5 h-5 mr-1 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                            </svg>
+                                            {% trans "Excel (XLSX)" %}
+                                        </span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="mb-4">
-                            <div class="flex items-center mt-4">
-                                <input class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" type="checkbox" id="save-to-storage" name="save_to_storage" value="true">
-                                <label class="ml-2 text-sm text-gray-700" for="save-to-storage">
-                                    {% trans "Salva anche nel cloud storage" %}
+                            <div class="form-control">
+                                <label class="label cursor-pointer justify-start">
+                                    <input class="checkbox checkbox-primary" type="checkbox" id="save-to-storage" name="save_to_storage" value="true">
+                                    <span class="label-text ml-2">{% trans "Salva anche nel cloud storage" %}</span>
                                 </label>
+                                <div class="ml-6">
+                                    <span class="text-xs opacity-60">{% trans "Il file verrà salvato come 'report_YYYYMMDD_HHMMSS.xlsx' nel cloud storage" %}</span>
+                                </div>
                             </div>
-                            <p class="text-xs text-gray-500 mt-1 ml-6">{% trans "Il file verrà salvato come 'report_YYYYMMDD_HHMMSS.xlsx' nel cloud storage" %}</p>
                         </div>
                     </div>
                 </div>
@@ -180,8 +192,8 @@
         <div class="flex justify-between space-x-2">
             <div>
                 {% if user.is_authenticated %}
-                <a href="{% url 'report_files' %}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <a href="{% url 'report_files' %}" class="btn btn-outline gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                     </svg>
                     {% trans "Gestisci Report Salvati" %}
@@ -190,14 +202,14 @@
             </div>
             
             <div class="flex space-x-2">
-                <a href="{% url 'event_list' %}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <a href="{% url 'event_list' %}" class="btn btn-outline gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
                     {% trans "Torna alla lista" %}
                 </a>
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed" id="generate-report-btn" disabled>
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <button type="submit" class="btn btn-primary text-white gap-2" id="generate-report-btn" disabled>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                     </svg>
                     {% trans "Genera Report" %}
@@ -261,11 +273,6 @@
         
         // Initialize save to storage checkbox state
         saveToStorage.disabled = !formatExcel.checked;
-        
-        // Apply Tailwind CSS classes to form inputs on load
-        document.querySelectorAll('select').forEach(select => {
-            select.classList.add('mt-1', 'block', 'w-full', 'rounded-md', 'border-gray-300', 'shadow-sm', 'focus:border-blue-500', 'focus:ring', 'focus:ring-blue-500', 'focus:ring-opacity-50');
-        });
     });
 </script>
 {% endblock %}

@@ -46,6 +46,7 @@ class EventForm(forms.ModelForm):
             "tipologia",
             "descrizione",
             "public",
+            "privatistica"
         ]
         widgets = {
             "data_inizio": forms.DateInput(attrs={"type": "date"}),

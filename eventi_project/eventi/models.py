@@ -9,12 +9,29 @@ import os
 
 from .storage import BackblazeB2Storage
 
+class Settore(models.Model):
+    nome = models.CharField(
+        "Nome Settore", 
+        max_length=255, 
+        unique=True
+    )
+
+    class Meta:
+        verbose_name = "Settore"
+        verbose_name_plural = "Settori"
+        ordering = ['nome']
+
+    def __str__(self):
+        return self.nome
+
+
 
 class Event(models.Model):
     COUNTRY_CHOICES = [
         ("Italia", "Italia"),
         ("Serbia", "Serbia"),
         ("Montenegro", "Montenegro"),
+        ("Altro", "Altro"),
     ]
 
     OFFICE_CHOICES = [
@@ -37,10 +54,21 @@ class Event(models.Model):
     data_fine = models.DateField("Data Fine", blank=True, null=True)
     paese = models.CharField("Paese", max_length=50, choices=COUNTRY_CHOICES)
     citta = models.CharField("Città", max_length=100)
-    settore = models.CharField("Settore", max_length=255)
+
+    settore = models.ForeignKey(
+        Settore, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        related_name='events', 
+        verbose_name="Settore"
+    )
+
+
     tipologia = models.CharField("Tipologia", max_length=255)
     descrizione = models.TextField("Descrizione")
     public = models.BooleanField("Public", default=True)
+
+    privatistica = models.BooleanField("Privatistica", default=False)
 
     # User tracking fields
     created_by = models.ForeignKey(

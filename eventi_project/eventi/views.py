@@ -24,13 +24,12 @@ from django.db.models import Case, When, Value, IntegerField
 
 from django.utils.translation import gettext_lazy as _
 
-from django.contrib import messages
 from django.views.generic import FormView
 from django.urls import reverse
 
 from django.http import FileResponse, Http404
 
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
 
 from django.http import HttpResponse
 from django import forms
@@ -60,11 +59,13 @@ from botocore.client import Config
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
-from .models import Event, EventFile
+from .models import EventFile
 from .forms import EventForm
 
 
 # Public views (read-only)
+
+
 class EventListView(ListView):
     model = Event
     template_name = "eventi/event_list.html"
@@ -72,7 +73,8 @@ class EventListView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        queryset = Event.objects.all()
+        # Start with a queryset that includes related models to avoid N+1 queries
+        queryset = Event.objects.all().select_related("settore")
 
         # Handle search and filters
         q = self.request.GET.get("q")
@@ -81,16 +83,22 @@ class EventListView(ListView):
         paese = self.request.GET.get("paese")
         settore = self.request.GET.get("settore")
 
+        # Build query conditions incrementally instead of chaining filters
+        conditions = Q()
         if q:
-            queryset = queryset.filter(titolo__icontains=q)
+            conditions &= Q(titolo__icontains=q)
         if categoria:
-            queryset = queryset.filter(categoria=categoria)
+            conditions &= Q(categoria=categoria)
         if office:
-            queryset = queryset.filter(office=office)
+            conditions &= Q(office=office)
         if paese:
-            queryset = queryset.filter(paese=paese)
+            conditions &= Q(paese=paese)
         if settore:
-            queryset = queryset.filter(settore=settore)
+            conditions &= Q(settore_id=settore)
+
+        # Apply all filters at once
+        if conditions:
+            queryset = queryset.filter(conditions)
 
         # Handle sorting
         sort_field = self.request.GET.get("sort", "data_inizio")
@@ -108,15 +116,16 @@ class EventListView(ListView):
         if sort_field not in allowed_fields:
             sort_field = "data_inizio"
 
-        # Apply sorting direction
-        if sort_direction == "asc":
-            order_by = sort_field
-        else:
-            order_by = f"-{sort_field}"
-
+        # Special handling for settore field (now a foreign key)
+        if sort_field == "settore":
+            # Use joined field instead of lookup
+            if sort_direction == "asc":
+                queryset = queryset.order_by("settore__nome")
+            else:
+                queryset = queryset.order_by("-settore__nome")
         # Special handling for office field (Belgrado first)
-        if sort_field == "office":
-            # Use Case/When for custom ordering
+        elif sort_field == "office":
+            # Use Case/When but with a single annotation
             queryset = queryset.annotate(
                 office_order=Case(
                     When(office="Belgrado", then=Value(0)),
@@ -129,6 +138,11 @@ class EventListView(ListView):
             else:
                 queryset = queryset.order_by("-office_order", "-office")
         else:
+            # Apply sorting direction for other fields
+            if sort_direction == "asc":
+                order_by = sort_field
+            else:
+                order_by = f"-{sort_field}"
             queryset = queryset.order_by(order_by)
 
         return queryset
@@ -136,13 +150,31 @@ class EventListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # Add choices for filter dropdowns
-        context["categoria_choices"] = Event.CATEGORIA_CHOICES
+        # Cache frequently accessed data
+        from django.core.cache import cache
+
+        # Try to get categories from cache first
+        categoria_choices = cache.get("categoria_choices")
+        if not categoria_choices:
+            categoria_choices = Event.CATEGORIA_CHOICES
+            # Cache for 1 hour (3600 seconds)
+            cache.set("categoria_choices", categoria_choices, 3600)
+        context["categoria_choices"] = categoria_choices
+
+        # Same for other static choices
         context["office_choices"] = Event.OFFICE_CHOICES
         context["paese_choices"] = Event.COUNTRY_CHOICES
-        context["settore_choices"] = list(
-            Event.objects.values_list("settore", flat=True).distinct()
-        )
+
+        # For settore choices, use a cached query
+        settore_choices = cache.get("settore_choices")
+        if not settore_choices:
+            from .models import Settore
+
+            settore_choices = [
+                (s.id, s.nome) for s in Settore.objects.all().order_by("nome")
+            ]
+            cache.set("settore_choices", settore_choices, 3600)
+        context["settore_choices"] = settore_choices
 
         # Add current filter values for re-selecting in dropdowns
         context["current_categoria"] = self.request.GET.get("categoria", "")
@@ -247,7 +279,6 @@ class EventFileUploadView(LoginRequiredMixin, FormView):
     template_name = "eventi/eventfile_form.html"
 
     def get_form_class(self):
-
         # Create a dynamic form class
         class FileUploadForm(forms.Form):
             file = forms.FileField(
@@ -439,7 +470,7 @@ class EventFileDownloadView(LoginRequiredMixin, View):
             filename = event_file.file.name.split("/")[-1]
             response["Content-Disposition"] = f'attachment; filename="{filename}"'
             return response
-        except Exception as e:
+        except Exception:
             raise Http404("Il file richiesto non è disponibile.")
 
 
@@ -553,7 +584,7 @@ class GenerateReportView(LoginRequiredMixin, TemplateView):
         # Use a context manager to ensure file is properly closed
         try:
             # Create a unique filename to reduce conflict chances
-            unique_filename = f'eventi_report_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.docx'
+            unique_filename = f"eventi_report_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.docx"
             output_path = os.path.join(tempfile.gettempdir(), unique_filename)
 
             # Generate the document
@@ -647,7 +678,7 @@ class GenerateReportView(LoginRequiredMixin, TemplateView):
                 event.data_fine.strftime("%d/%m/%Y") if event.data_fine else "",
                 event.get_paese_display(),  # Use display value for choices
                 event.citta,
-                event.settore,
+                str(event.settore) if event.settore else "",
                 event.tipologia,
                 event.descrizione,
                 "Sì" if event.public else "No",
@@ -680,15 +711,15 @@ class GenerateReportView(LoginRequiredMixin, TemplateView):
 
             # Calculate adjusted width, constrained between min and max
             adjusted_width = min(max(min_width, max_length + 2), max_width)
-            worksheet.column_dimensions[get_column_letter(col_num)].width = (
-                adjusted_width
-            )
+            worksheet.column_dimensions[
+                get_column_letter(col_num)
+            ].width = adjusted_width
 
             # For description column, always use max width
             if header == "Descrizione":
-                worksheet.column_dimensions[get_column_letter(col_num)].width = (
-                    max_width
-                )
+                worksheet.column_dimensions[
+                    get_column_letter(col_num)
+                ].width = max_width
 
         # Generate timestamp for filename
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")

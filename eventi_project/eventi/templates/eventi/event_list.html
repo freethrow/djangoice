@@ -4,7 +4,7 @@
 {% block title %}{% trans "Eventi" %}{% endblock %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" x-data="{
+<div class="container mx-auto py-6" x-data="{
     sortField: '{{ request.GET.sort|default:'data_inizio' }}',
     sortDirection: '{{ request.GET.direction|default:'desc' }}',
     toggleSort(field) {
@@ -28,41 +28,45 @@
     }
 }">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-900">{% trans "Eventi" %}</h1>
+        <h1 class="text-3xl font-bold">{% trans "Eventi" %}</h1>
         {% if user.is_authenticated %}
-            <a href="{% url 'event_create' %}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-                {% trans "Crea nuovo evento" %}
-            </a>
+        <a href="{% url 'event_create' %}" class="btn btn-ghost gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            {% trans "Crea nuovo evento" %}
+        </a>
         {% endif %}
     </div>
     
-    <div class="bg-white shadow-md rounded-lg">
-        <div class="p-6 bg-gray-50 border-b border-gray-200">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body bg-base-200">
             <form id="filter-form" method="get" action="{% url 'event_list' %}" class="grid md:grid-cols-2 gap-4">
                 <!-- Preserve sort parameters in the form -->
                 <input type="hidden" name="sort" :value="sortField">
                 <input type="hidden" name="direction" :value="sortDirection">
                 
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">{% trans "Cerca" %}</label>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Cerca" %}</span>
+                        </label>
                         <input 
                             type="text" 
                             name="q" 
                             value="{{ request.GET.q|default:'' }}"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                            class="input input-bordered w-full" 
                             placeholder="{% trans 'Cerca eventi...' %}"
                         >
                     </div>
                     
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">{% trans "Categoria" %}</label>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Categoria" %}</span>
+                        </label>
                         <select 
                             name="categoria" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            class="select select-bordered w-full"
                         >
                             <option value="">{% trans "Tutte le Categorie" %}</option>
                             {% for value, label in categoria_choices %}
@@ -76,11 +80,13 @@
                 </div>
                 
                 <div class="grid grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">{% trans "Ufficio" %}</label>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Ufficio" %}</span>
+                        </label>
                         <select 
                             name="office" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            class="select select-bordered w-full"
                         >
                             <option value="">{% trans "Tutti gli Uffici" %}</option>
                             {% for value, label in office_choices %}
@@ -92,11 +98,13 @@
                         </select>
                     </div>
                     
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">{% trans "Paese" %}</label>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Paese" %}</span>
+                        </label>
                         <select 
                             name="paese" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            class="select select-bordered w-full"
                         >
                             <option value="">{% trans "Tutti i Paesi" %}</option>
                             {% for value, label in paese_choices %}
@@ -108,17 +116,19 @@
                         </select>
                     </div>
                     
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">{% trans "Settore" %}</label>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">{% trans "Settore" %}</span>
+                        </label>
                         <select 
                             name="settore" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            class="select select-bordered w-full"
                         >
                             <option value="">{% trans "Tutti i Settori" %}</option>
-                            {% for settore in settore_choices %}
-                                <option value="{{ settore }}" 
-                                        {% if settore == current_settore %}selected{% endif %}>
-                                    {{ settore }}
+                            {% for id, nome in settore_choices %}
+                                <option value="{{ id }}" 
+                                        {% if id|stringformat:'s' == current_settore %}selected{% endif %}>
+                                    {{ nome }}
                                 </option>
                             {% endfor %}
                         </select>
@@ -128,9 +138,9 @@
                 <div class="flex items-end space-x-2">
                     <button 
                         type="submit"
-                        class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        class="btn btn-primary gap-2"
                     >
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                         {% trans "Filtra" %}
@@ -138,9 +148,9 @@
                     
                     <a 
                         href="{% url 'event_list' %}"
-                        class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        class="btn btn-error gap-2"
                     >
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                         {% trans "Azzera filtri" %}
@@ -151,159 +161,157 @@
         
         <div class="overflow-x-auto">
             {% if events %}
-                <table class="w-full divide-y divide-gray-200 table-fixed">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th @click="toggleSort('titolo')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 w-1/4">
-                                <div class="flex items-center">
-                                    {% trans "Titolo" %}
-                                    <span class="ml-1">
-                                        <template x-if="getSortIcon('titolo') === 'asc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            </svg>
-                                        </template>
-                                        <template x-if="getSortIcon('titolo') === 'desc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </template>
-                                    </span>
-                                </div>
-                            </th>
-                            <th @click="toggleSort('data_inizio')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 w-1/6">
-                                <div class="flex items-center">
-                                    {% trans "Data" %}
-                                    <span class="ml-1">
-                                        <template x-if="getSortIcon('data_inizio') === 'asc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            </svg>
-                                        </template>
-                                        <template x-if="getSortIcon('data_inizio') === 'desc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </template>
-                                    </span>
-                                </div>
-                            </th>
-                            <th @click="toggleSort('citta')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 w-1/6">
-                                <div class="flex items-center">
-                                    {% trans "Luogo" %}
-                                    <span class="ml-1">
-                                        <template x-if="getSortIcon('citta') === 'asc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            </svg>
-                                        </template>
-                                        <template x-if="getSortIcon('citta') === 'desc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </template>
-                                    </span>
-                                </div>
-                            </th>
-                            <th @click="toggleSort('settore')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 w-1/6">
-                                <div class="flex items-center">
-                                    {% trans "Settore" %}
-                                    <span class="ml-1">
-                                        <template x-if="getSortIcon('settore') === 'asc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            </svg>
-                                        </template>
-                                        <template x-if="getSortIcon('settore') === 'desc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </template>
-                                    </span>
-                                </div>
-                            </th>
-                            <th @click="toggleSort('tipologia')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 w-1/6">
-                                <div class="flex items-center">
-                                    {% trans "Tipologia" %}
-                                    <span class="ml-1">
-                                        <template x-if="getSortIcon('tipologia') === 'asc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            </svg>
-                                        </template>
-                                        <template x-if="getSortIcon('tipologia') === 'desc'">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </template>
-                                    </span>
-                                </div>
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[80px]">{% trans "Azioni" %}</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        {% for event in events %}
-                            {% if event.office == "Belgrado" %}
-                                <tr class="hover:bg-gray-50 transition duration-150">
-                            {% else %}
-                                <tr class="bg-blue-100 hover:bg-gray-50 transition duration-150">
-                            {% endif %}
-                                <td class="px-6 py-4 {% if request.GET.sort == 'titolo' %}sorted-column{% endif %}">
-                                    <div class="break-words">
-                                        <a href="{% url 'event_detail' pk=event.id %}" class="text-blue-600 hover:text-blue-900 font-semibold">
-                                            {{ event.titolo }} {{ event.office }}
-                                        </a>
-                                        {% if not event.public %}
-                                            <span class="ml-2 px-2 py-1 text-xs font-medium text-red-700 bg-red-100 rounded-full">
-                                                {% trans "Non pubblico" %}
-                                            </span>
-                                        {% endif %}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 {% if request.GET.sort == 'data_inizio' or not request.GET.sort %}sorted-column{% endif %}">
-                                    {{ event.data_inizio|date:"d/m/Y" }}
-                                    {% if event.data_fine and event.data_fine != event.data_inizio %}
-                                        <br>{{ event.data_fine|date:"d/m/Y" }}
-                                    {% endif %}
-                                </td>
-                                <td class="px-6 py-4 {% if request.GET.sort == 'citta' %}sorted-column{% endif %}">
-                                    <div class="truncate">{{ event.citta }}, {{ event.paese }}</div>
-                                </td>
-                                <td class="px-6 py-4 {% if request.GET.sort == 'settore' %}sorted-column{% endif %}">
-                                    <div class="truncate">{{ event.settore }}</div>
-                                </td>
-                                <td class="px-6 py-4 {% if request.GET.sort == 'tipologia' %}sorted-column{% endif %}">
-                                    <div class="truncate">{{ event.tipologia }}</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex space-x-2">
-                                        <a href="{% url 'event_detail' pk=event.id %}" class="text-blue-600 hover:text-blue-900">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                            </svg>
-                                        </a>
-                                        {% if user.is_authenticated and event.created_by == user or user.is_staff %}
-                                            <a href="{% url 'event_update' pk=event.id %}" class="text-yellow-600 hover:text-yellow-900">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra">
+                        <thead>
+                            <tr>
+                                <th @click="toggleSort('titolo')" class="cursor-pointer">
+                                    <div class="flex items-center">
+                                        {% trans "Titolo" %}
+                                        <span class="ml-1">
+                                            <template x-if="getSortIcon('titolo') === 'asc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
                                                 </svg>
-                                            </a>
-                                            <a href="{% url 'event_delete' pk=event.id %}" class="text-red-600 hover:text-red-900">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </template>
+                                            <template x-if="getSortIcon('titolo') === 'desc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                 </svg>
-                                            </a>
-                                        {% endif %}
+                                            </template>
+                                        </span>
                                     </div>
-                                </td>
+                                </th>
+                                <th @click="toggleSort('data_inizio')" class="cursor-pointer">
+                                    <div class="flex items-center">
+                                        {% trans "Data" %}
+                                        <span class="ml-1">
+                                            <template x-if="getSortIcon('data_inizio') === 'asc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                                </svg>
+                                            </template>
+                                            <template x-if="getSortIcon('data_inizio') === 'desc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </template>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th @click="toggleSort('citta')" class="cursor-pointer">
+                                    <div class="flex items-center">
+                                        {% trans "Luogo" %}
+                                        <span class="ml-1">
+                                            <template x-if="getSortIcon('citta') === 'asc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                                </svg>
+                                            </template>
+                                            <template x-if="getSortIcon('citta') === 'desc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </template>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th @click="toggleSort('settore')" class="cursor-pointer">
+                                    <div class="flex items-center">
+                                        {% trans "Settore" %}
+                                        <span class="ml-1">
+                                            <template x-if="getSortIcon('settore') === 'asc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                                </svg>
+                                            </template>
+                                            <template x-if="getSortIcon('settore') === 'desc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </template>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th @click="toggleSort('tipologia')" class="cursor-pointer">
+                                    <div class="flex items-center">
+                                        {% trans "Tipologia" %}
+                                        <span class="ml-1">
+                                            <template x-if="getSortIcon('tipologia') === 'asc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                                </svg>
+                                            </template>
+                                            <template x-if="getSortIcon('tipologia') === 'desc'">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </template>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th>{% trans "Azioni" %}</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for event in events %}
+                                <tr class="{% if event.office == 'Belgrado' %}{% else %} bg-opacity-20{% endif %}">
+                                    <td>
+                                        <div class="break-words">
+                                            <a href="{% url 'event_detail' pk=event.id %}" class="text-base-content font-bold no-underline hover:text-success transition-colors duration-200">
+                                                {{ event.titolo|upper }} ({{ event.office }})
+                                            </a>
+                                            {% if not event.public %}
+                                                <span class="badge badge-error badge-sm ml-2">
+                                                    {% trans "Non pubblico" %}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ event.data_inizio|date:"d/m/Y" }}
+                                        {% if event.data_fine and event.data_fine != event.data_inizio %}
+                                            <br>{{ event.data_fine|date:"d/m/Y" }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="truncate">{{ event.citta }}, {{ event.paese }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="truncate">{{ event.settore.nome }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="truncate">{{ event.tipologia }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="flex space-x-2">
+                                            <a href="{% url 'event_detail' pk=event.id %}" class="btn btn-ghost btn-sm btn-circle">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                </svg>
+                                            </a>
+                                            {% if user.is_authenticated and event.created_by == user or user.is_staff %}
+                                                <a href="{% url 'event_update' pk=event.id %}" class="btn btn-ghost btn-sm btn-circle text-warning">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                                    </svg>
+                                                </a>
+                                                <a href="{% url 'event_delete' pk=event.id %}" class="btn btn-ghost btn-sm btn-circle text-error">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                    </svg>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             {% else %}
-                <div class="p-6 text-center text-gray-500">
+                <div class="p-6 text-center text-base-content/60">
                     {% trans "Nessun evento trovato." %}
                 </div>
             {% endif %}
@@ -311,41 +319,37 @@
     </div>
     
     {% if is_paginated %}
-        <div class="flex justify-center mt-6 space-x-2">
-            {% if page_obj.has_previous %}
-                <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
-                   class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-                    &laquo; {% trans "Prima" %}
-                </a>
-                <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
-                   class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-                    {% trans "Precedente" %}
-                </a>
-            {% endif %}
-            
-            <span class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md">
-                {% trans "Pagina" %} {{ page_obj.number }} {% trans "di" %} {{ page_obj.paginator.num_pages }}
-            </span>
-            
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
-                   class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-                    {% trans "Successiva" %}
-                </a>
-                <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
-                   class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-                    {% trans "Ultima" %} &raquo;
-                </a>
-            {% endif %}
+        <div class="flex justify-center mt-6">
+            <div class="join">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
+                       class="join-item btn btn-sm">
+                        &laquo;
+                    </a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
+                       class="join-item btn btn-sm">
+                        {% trans "Precedente" %}
+                    </a>
+                {% endif %}
+                
+                <button class="join-item btn btn-sm">
+                    {% trans "Pagina" %} {{ page_obj.number }} {% trans "di" %} {{ page_obj.paginator.num_pages }}
+                </button>
+                
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
+                       class="join-item btn btn-sm">
+                        {% trans "Successiva" %}
+                    </a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.categoria %}&categoria={{ request.GET.categoria }}{% endif %}{% if request.GET.office %}&office={{ request.GET.office }}{% endif %}{% if request.GET.paese %}&paese={{ request.GET.paese }}{% endif %}{% if request.GET.settore %}&settore={{ request.GET.settore }}{% endif %}&sort={{ request.GET.sort|default:'data_inizio' }}&direction={{ request.GET.direction|default:'desc' }}" 
+                       class="join-item btn btn-sm">
+                        &raquo;
+                    </a>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 </div>
-
-<style>
-    .sorted-column {
-        background-color: rgba(59, 130, 246, 0.05);
-    }
-</style>
 
 {% block extra_js %}
 <script>

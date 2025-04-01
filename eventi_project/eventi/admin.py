@@ -1,10 +1,11 @@
 # admin.py
 from django.contrib import admin
-from .models import Event, EventFile
+from unfold.admin import ModelAdmin
+from .models import Event, EventFile, Settore
 
 
 @admin.register(Event)
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(ModelAdmin):
     list_display = (
         "titolo",
         "office",
@@ -31,4 +32,18 @@ class EventAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(EventFile)
+
+@admin.register(Settore)
+class SettoreAdmin(ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome',)
+    ordering = ('nome',)
+
+
+#admin.site.register(EventFile)
+
+@admin.register(EventFile)
+class EventFileAdmin(ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    ordering = ('title',)
