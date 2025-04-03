@@ -219,6 +219,22 @@
                         </div>
                     </div>
 
+                    <!-- Privatistica checkbox -->
+                    <div class="md:col-span-2">
+                        <div class="form-control">
+                            <label class="label cursor-pointer justify-start">
+                                {% render_field form.privatistica class="checkbox" %}
+                                <span class="label-text ml-2">{{ form.privatistica.label }}</span>
+                            </label>
+                            {% for error in form.privatistica.errors %}
+                                <label class="label">
+                                    <span class="label-text-alt text-error">{{ error }}</span>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+
                     <!-- File upload -->
                     {% if form.files %}
                     <div class="md:col-span-2">

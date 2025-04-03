@@ -21,6 +21,7 @@
                         {% endif %}
                         <p class="mb-3"><span class="font-bold">{% trans "Città" %}:</span> {{ event.citta }}</p>
                         <p class="mb-3"><span class="font-bold">{% trans "Paese" %}:</span> {{ event.paese }}</p>
+                        
                     </div>
                     <div>
                         <p class="mb-3"><span class="font-bold">{% trans "Office" %}:</span> {{ event.office }}</p>
@@ -32,6 +33,9 @@
                                     {% trans "Non pubblico" %}
                                 </span>
                             </p>
+                        {% endif %}
+                        {% if event.privatistica %}
+                            <p class="mb-3"><span class="font-bold text-primary">{% trans "Privatistica" %}</span></p>
                         {% endif %}
                     </div>
                 </div>

@@ -95,6 +95,7 @@ class EventForm(forms.ModelForm):
                 ),
                 "descrizione",
                 "public",
+                "privatistica",
             ),
             Fieldset(
                 _("Documenti"),
