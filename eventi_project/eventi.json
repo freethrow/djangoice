@@ -1,0 +1,1802 @@
+[
+{
+  "model": "eventi.settore",
+  "pk": 1,
+  "fields": {
+    "nome": "Macchine agricole"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 2,
+  "fields": {
+    "nome": "Occhialeria"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 3,
+  "fields": {
+    "nome": "Calzature"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 4,
+  "fields": {
+    "nome": "Agroalimentare"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 5,
+  "fields": {
+    "nome": "Climatizzazione"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 6,
+  "fields": {
+    "nome": "Cosmetica"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 7,
+  "fields": {
+    "nome": "Editoria"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 8,
+  "fields": {
+    "nome": "Vino"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 9,
+  "fields": {
+    "nome": "Arredamento"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 10,
+  "fields": {
+    "nome": "Macchine lavorazione legno"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 11,
+  "fields": {
+    "nome": "Economia circolare"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 12,
+  "fields": {
+    "nome": "Tessile"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 13,
+  "fields": {
+    "nome": "Florovivaistico"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 14,
+  "fields": {
+    "nome": "Macchine per calzature"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 16,
+  "fields": {
+    "nome": "Arredamento contract"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 17,
+  "fields": {
+    "nome": "Metalmeccanica"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 18,
+  "fields": {
+    "nome": "Macchine agricole e alimentari"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 19,
+  "fields": {
+    "nome": "Metalmeccanico"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 20,
+  "fields": {
+    "nome": "Mobili / Arredo"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 21,
+  "fields": {
+    "nome": "Fitness"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 22,
+  "fields": {
+    "nome": "Florovivaismo"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 23,
+  "fields": {
+    "nome": "Gioielleria"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 24,
+  "fields": {
+    "nome": "Food & Wine"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 25,
+  "fields": {
+    "nome": "Marmo"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 26,
+  "fields": {
+    "nome": "Plastica"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 27,
+  "fields": {
+    "nome": "Officine, componentistica"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 28,
+  "fields": {
+    "nome": "Plurisettoriale"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 29,
+  "fields": {
+    "nome": "Turismo"
+  }
+},
+{
+  "model": "eventi.settore",
+  "pk": 30,
+  "fields": {
+    "nome": "Nautico"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 126,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "FIERA AGRICOLA VERONA",
+    "data_inizio": "2024-01-31",
+    "data_fine": "2024-02-03",
+    "paese": "Italia",
+    "citta": "Verona",
+    "settore": 1,
+    "tipologia": "Fiera. Incoming di operatori esteri",
+    "descrizione": "Missione di 3 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.746Z",
+    "updated_at": "2025-03-03T09:19:55.746Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 127,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "MIDO",
+    "data_inizio": "2024-02-02",
+    "data_fine": "2024-02-05",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 2,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo con IES - International Eyewear solutions SRL",
+    "descrizione": "Missione di 4 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.753Z",
+    "updated_at": "2025-03-03T09:19:55.753Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 128,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "MICAM",
+    "data_inizio": "2024-02-18",
+    "data_fine": "2024-02-21",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 3,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo",
+    "descrizione": "Missione di 4 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.758Z",
+    "updated_at": "2025-03-03T09:19:55.758Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 129,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "PROMOZIONE DI POMODORO DI PACHINO",
+    "data_inizio": "2024-02-20",
+    "data_fine": "2024-02-22",
+    "paese": "Italia",
+    "citta": "Catania",
+    "settore": 4,
+    "tipologia": "Mostra. Incoming operatori esteri",
+    "descrizione": "Missione di 3 operatori serbi. Incontri B2B e visite aziendali",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.763Z",
+    "updated_at": "2025-03-03T09:19:55.763Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 130,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "SIRHA BUDAPEST 2024",
+    "data_inizio": "2024-03-05",
+    "data_fine": "2024-03-07",
+    "paese": "Ungheria",
+    "citta": "Budapest",
+    "settore": 4,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 4 operatori serbi. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.768Z",
+    "updated_at": "2025-03-03T09:19:55.768Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 131,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "EXPOCOMFORT",
+    "data_inizio": "2024-03-12",
+    "data_fine": "2024-03-15",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 5,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 6 operatori serbi. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.773Z",
+    "updated_at": "2025-03-03T09:19:55.773Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 132,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "COSMOPROF",
+    "data_inizio": "2024-03-22",
+    "data_fine": "2024-03-24",
+    "paese": "Italia",
+    "citta": "Bologna",
+    "settore": 6,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore serbo. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.778Z",
+    "updated_at": "2025-03-03T09:19:55.778Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 133,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "BOLOGNA CHILDREN'S BOOK FAIR",
+    "data_inizio": "2024-04-08",
+    "data_fine": "2024-04-11",
+    "paese": "Italia",
+    "citta": "Bologna",
+    "settore": 7,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore serbo. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.783Z",
+    "updated_at": "2025-03-03T09:19:55.783Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 134,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "VINITALY",
+    "data_inizio": "2024-04-14",
+    "data_fine": "2024-04-17",
+    "paese": "Italia",
+    "citta": "Verona",
+    "settore": 8,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 6 operatori serbi. Visita alla Fiera, degustazione guidate con consorzi, agenda B2B",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.789Z",
+    "updated_at": "2025-03-03T09:19:55.789Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 135,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "SALONE DEL MOBILE",
+    "data_inizio": "2024-04-17",
+    "data_fine": "2024-04-20",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 9,
+    "tipologia": "Fiera. Incoming operatori esteri, a contributo",
+    "descrizione": "Missione di 2 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.794Z",
+    "updated_at": "2025-03-03T09:19:55.794Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 136,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "MACFRUT",
+    "data_inizio": "2024-05-08",
+    "data_fine": "2024-05-10",
+    "paese": "Italia",
+    "citta": "Rimini",
+    "settore": 4,
+    "tipologia": "Fiera. Incoming operatori esteri, a contributo",
+    "descrizione": "Missione di 5 operatori serbi. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.799Z",
+    "updated_at": "2025-03-03T09:19:55.799Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 137,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "XYLEXPO",
+    "data_inizio": "2024-05-21",
+    "data_fine": "2024-05-24",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 10,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 4 operatori serbi. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.804Z",
+    "updated_at": "2025-03-03T09:19:55.804Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 138,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "BUSINESS FORUM ITALIA-SERBIA",
+    "data_inizio": "2024-05-24",
+    "data_fine": "2024-05-24",
+    "paese": "Italia",
+    "citta": "Trieste",
+    "settore": 11,
+    "tipologia": "Forum e B2B",
+    "descrizione": "Forum, in collaborazione con l'Ambasciata d'Italia su transizione verde ed economia circolare, con i B2B",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.808Z",
+    "updated_at": "2025-03-03T09:19:55.808Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 139,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "VITIGNO ITALIA",
+    "data_inizio": "2024-06-02",
+    "data_fine": "2024-06-06",
+    "paese": "Italia",
+    "citta": "Napoli",
+    "settore": 8,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore serbo. Visita alla Fiera, degustazioni e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.813Z",
+    "updated_at": "2025-03-03T09:19:55.813Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 140,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "PHYGITAL SOSTAINABILITY EXPO",
+    "data_inizio": "2024-06-04",
+    "data_fine": "2024-06-05",
+    "paese": "Italia",
+    "citta": "Roma",
+    "settore": 12,
+    "tipologia": "Conferenza. Incoming operatori esteri",
+    "descrizione": "Missione di 2 operatori serbi.",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.818Z",
+    "updated_at": "2025-03-03T09:19:55.818Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 141,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "EXPO RIVA SCHUH",
+    "data_inizio": "2024-06-15",
+    "data_fine": "2024-06-18",
+    "paese": "Italia",
+    "citta": "Riva del Garda",
+    "settore": 3,
+    "tipologia": "Fiera. Incoming operatori esteri, a contributo",
+    "descrizione": "Missione di 1 operatore serbo. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.823Z",
+    "updated_at": "2025-03-03T09:19:55.823Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 142,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "FLORMART",
+    "data_inizio": "2024-09-25",
+    "data_fine": "2024-09-27",
+    "paese": "Italia",
+    "citta": "Padova",
+    "settore": 13,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 4 operatori serbi. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.828Z",
+    "updated_at": "2025-03-03T09:19:55.828Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 143,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "MICAM",
+    "data_inizio": "2024-09-15",
+    "data_fine": "2024-09-17",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 3,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo",
+    "descrizione": "Missione di 4 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.834Z",
+    "updated_at": "2025-03-03T09:19:55.834Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 144,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "SIMAC TANNING TECH",
+    "data_inizio": "2024-09-17",
+    "data_fine": "2024-09-19",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 14,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo",
+    "descrizione": "Missione di 3 operatori serbi. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.839Z",
+    "updated_at": "2025-03-03T09:19:55.839Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 145,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "B2CHESSE e TERRAMADRE",
+    "data_inizio": "2024-09-25",
+    "data_fine": "2024-09-30",
+    "paese": "Italia",
+    "citta": "Bergamo/Torino",
+    "settore": 4,
+    "tipologia": "Salone formaggio e prodotti alimentari, Incoming",
+    "descrizione": "Missione di 2 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.844Z",
+    "updated_at": "2025-03-28T10:38:53.985Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 146,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "INOUT",
+    "data_inizio": "2024-10-09",
+    "data_fine": "2024-10-11",
+    "paese": "Italia",
+    "citta": "Rimini",
+    "settore": 16,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 2 operatori serbi. Visita alla fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.849Z",
+    "updated_at": "2025-03-03T09:19:55.849Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 147,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "BIMU",
+    "data_inizio": "2024-10-09",
+    "data_fine": "2024-10-12",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 17,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 5 operatori serbi, visita alla fiera e B2B con espositori.",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.854Z",
+    "updated_at": "2025-03-03T11:06:18.848Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 148,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "LAB INNOVA STUDY TOUR",
+    "data_inizio": "2024-11-05",
+    "data_fine": "2024-11-09",
+    "paese": "Italia",
+    "citta": "Bologna e dintorni",
+    "settore": 18,
+    "tipologia": "Visita alle aziende e alla fiera EIMA, macc. agricole",
+    "descrizione": "Missione di 6 operatori serbi, visita alle aziende del comparto e alla Fiera EIMA 2024",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.858Z",
+    "updated_at": "2025-03-03T09:19:55.858Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 149,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "EIMA",
+    "data_inizio": "2024-11-06",
+    "data_fine": "2024-11-10",
+    "paese": "Italia",
+    "citta": "Bologna e dintorni",
+    "settore": 18,
+    "tipologia": "Fiera. Incoming a contributo",
+    "descrizione": "Missione di 6 operatori serbi e 1 giornalista. Visita alla fiera e B2B con espositori, su business agenda",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.863Z",
+    "updated_at": "2025-03-03T09:19:55.863Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 150,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "AGROBELGRADE",
+    "data_inizio": "2024-01-25",
+    "data_fine": "2024-01-27",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 1,
+    "tipologia": "Fiera. Punto informativo",
+    "descrizione": "Stand informativo di 9 m2 gratuitamente offerto dalla Fiera di Belgrado",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.868Z",
+    "updated_at": "2025-03-03T09:19:55.868Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 151,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "MISSIONE DI RICOGNIZIONE NEI BALCANI ICE-UCIMU",
+    "data_inizio": "2024-01-25",
+    "data_fine": "2024-01-29",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 19,
+    "tipologia": "Business tour",
+    "descrizione": "Missione UCIMU - visite aziende ed enti in Serbia",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.873Z",
+    "updated_at": "2025-03-03T09:19:55.873Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 152,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "DESIGN DAY 2024",
+    "data_inizio": "2024-03-26",
+    "data_fine": "2024-03-26",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 20,
+    "tipologia": "Conferenza e mostra",
+    "descrizione": "Conferenza sulle eccellenze di design italiano nel settore dei mobili e mostra sedie storiche",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.878Z",
+    "updated_at": "2025-03-03T09:19:55.878Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 153,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "FIERA DI AGRICOLTURA",
+    "data_inizio": "2024-05-18",
+    "data_fine": "2024-05-23",
+    "paese": "Serbia",
+    "citta": "Novi Sad",
+    "settore": 1,
+    "tipologia": "Partecipazione collettiva italiana alla Fiera",
+    "descrizione": "Stand collettivo di ca. 350 m2, prevista la partecipazione di ca. 20 aziende italiane, in collaborazione con UNACOMA",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.882Z",
+    "updated_at": "2025-03-03T09:19:55.882Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 154,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "LAB INNOVA SUD ED EAST EUROPA 2024",
+    "data_inizio": "2024-06-04",
+    "data_fine": "2024-06-06",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 4,
+    "tipologia": "Corso di formazione marketing internazionale, tecnologie digitali ed innovative, packaging, sostenibilita'",
+    "descrizione": "Corso per circa 20 operatori totali, di cui 3-4 dal Montengro: importatori di macchine agricole, produttori o trasformatori di latte, carne, verdure e frutta",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.887Z",
+    "updated_at": "2025-03-03T09:19:55.887Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 155,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "FITNESS & BENNESERE Campagna social media",
+    "data_inizio": "2024-06-01",
+    "data_fine": "2024-06-30",
+    "paese": "Serbia",
+    "citta": "Belgrade",
+    "settore": 21,
+    "tipologia": "Campagna social media",
+    "descrizione": "Presentazione delle aziende sui social media con i influencer",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.892Z",
+    "updated_at": "2025-03-03T09:19:55.892Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 156,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "PROMOZIONE ANVE ICE FLOROVIVAISMO",
+    "data_inizio": "2024-10-22",
+    "data_fine": "2024-10-24",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 22,
+    "tipologia": "Studio di mercato, attivita' di comunicazione, missione operatori italiani in loco con i B2B",
+    "descrizione": "Attivita' coordinata tra l'ICE e ANVE (vivaisti esportatori), in collaborazione dell'Associazione serba per l'orticoltura paesaggistica",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.897Z",
+    "updated_at": "2025-03-03T09:19:55.897Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 157,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "SETTIMANA DELLA CUCINA ITALIANA NEL MONDO",
+    "data_inizio": "2024-11-15",
+    "data_fine": "2024-11-21",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 4,
+    "tipologia": "Promozione della cucina italiana",
+    "descrizione": "Degustazione di vini italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.902Z",
+    "updated_at": "2025-03-03T09:19:55.902Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 158,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "WINE VISION BY OPEN BALKAN",
+    "data_inizio": "2024-11-21",
+    "data_fine": "2024-11-24",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 8,
+    "tipologia": "Padiglione italiano alla Fiera",
+    "descrizione": "Stand ICE con la sala degustazioni per 50 persone per presentare i vini degli espositori selezionati tramite Vinitaly, Verona Fiere",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.907Z",
+    "updated_at": "2025-03-03T09:19:55.907Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 159,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "MIDO",
+    "data_inizio": "2025-02-08",
+    "data_fine": "2025-02-10",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 2,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo con IES - International Eyewear solutions SRL",
+    "descrizione": "Missione di 2 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.912Z",
+    "updated_at": "2025-03-03T09:19:55.912Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 160,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "Fashion & Jewels",
+    "data_inizio": "2025-02-22",
+    "data_fine": "2025-02-25",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 23,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore serbo. Visita alla Fiera e incontri B2B con gli espositori italiani RINUNCIA",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.917Z",
+    "updated_at": "2025-03-03T11:05:43.068Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 161,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "MICAM",
+    "data_inizio": "2025-02-23",
+    "data_fine": "2025-02-25",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 3,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo",
+    "descrizione": "Missione di 2 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.921Z",
+    "updated_at": "2025-03-03T09:19:55.921Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 162,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "SANA Food & Wine",
+    "data_inizio": "2025-02-23",
+    "data_fine": "2025-02-25",
+    "paese": "Italia",
+    "citta": "Bologna",
+    "settore": 24,
+    "tipologia": "Fiera, incoming operatori esteri",
+    "descrizione": "Missione di 4 operatori serbi. Visita alle Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.927Z",
+    "updated_at": "2025-03-03T09:19:55.927Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 163,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "COSMOPROF WORLDWIDE BOLOGNA",
+    "data_inizio": "2025-03-20",
+    "data_fine": "2025-03-23",
+    "paese": "Italia",
+    "citta": "Bologna",
+    "settore": 6,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore serbo (piu' numero di operatori da definire con trattamento ON SITE). Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.931Z",
+    "updated_at": "2025-03-03T09:19:55.931Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 164,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "INCOMING MARMO a CUSTONACI",
+    "data_inizio": "2025-03-18",
+    "data_fine": "2025-03-21",
+    "paese": "Italia",
+    "citta": "Custonaci",
+    "settore": 25,
+    "tipologia": "Incoming operatori esteri",
+    "descrizione": "Missione di 3 operatori serbi. Visita alle cave e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.937Z",
+    "updated_at": "2025-03-03T09:19:55.937Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 165,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "EUROFLORA",
+    "data_inizio": "2025-04-24",
+    "data_fine": "2025-05-04",
+    "paese": "Italia",
+    "citta": "Genova",
+    "settore": 13,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 5 operatori serbi nel periodo 25-28 aprile 2025. Visita alla Fiera, visite guidate e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.942Z",
+    "updated_at": "2025-03-03T11:05:19.785Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 166,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "SALONE DEL MOBILE",
+    "data_inizio": "2025-04-08",
+    "data_fine": "2025-04-13",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 9,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore serbo. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.947Z",
+    "updated_at": "2025-03-03T09:19:55.947Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 167,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "VINITALY",
+    "data_inizio": "2025-04-06",
+    "data_fine": "2025-04-09",
+    "paese": "Italia",
+    "citta": "Verona",
+    "settore": 8,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 8 operatori serbi. Visita alla Fiera, degustazione guidate con consorzi, agenda B2B",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.952Z",
+    "updated_at": "2025-03-03T09:19:55.952Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 168,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "MACFRUT",
+    "data_inizio": "2025-05-06",
+    "data_fine": "2025-05-08",
+    "paese": "Italia",
+    "citta": "Cesena",
+    "settore": 1,
+    "tipologia": "Fiera, Incoming operatori",
+    "descrizione": "Missione di 5 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.957Z",
+    "updated_at": "2025-03-03T09:19:55.957Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 169,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "GREENPLAST",
+    "data_inizio": "2025-05-27",
+    "data_fine": "2025-05-30",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 26,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 4 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.962Z",
+    "updated_at": "2025-03-03T09:19:55.962Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 170,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "LAMIERA",
+    "data_inizio": "2025-05-03",
+    "data_fine": "2025-05-06",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 17,
+    "tipologia": "Fiera delle macchine lavorazione metallo",
+    "descrizione": "Missione di 3 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.967Z",
+    "updated_at": "2025-03-03T09:19:55.967Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 171,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "AUTOPROMOTEC",
+    "data_inizio": "2025-05-21",
+    "data_fine": "2025-05-24",
+    "paese": "Italia",
+    "citta": "Bologna",
+    "settore": 27,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo",
+    "descrizione": "Missione di 2 operatori serbi. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.972Z",
+    "updated_at": "2025-03-03T09:19:55.972Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 172,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Belgrado",
+    "titolo": "GREENITALY",
+    "data_inizio": "2025-10-15",
+    "data_fine": "2025-10-17",
+    "paese": "Italia",
+    "citta": "Parma",
+    "settore": 13,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 6 operatori serbi. Visita alla Fiera, visite guidate e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.977Z",
+    "updated_at": "2025-03-03T11:04:43.718Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 173,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "BUSINESS FORUM ITALIA-SERBIA",
+    "data_inizio": "2025-01-31",
+    "data_fine": "2025-01-31",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 28,
+    "tipologia": "Forum e B2B",
+    "descrizione": "Forum, in collaborazione con l'Ambasciata d'Italia con i B2B. Settori: Economia circolare e transizione energetica, Agri-tech e Industria 5.0, Infrastrutture fisiche e immateriali",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.981Z",
+    "updated_at": "2025-03-03T11:05:59.444Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 174,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "FIERA DEL TURISMO",
+    "data_inizio": "2025-02-20",
+    "data_fine": "2025-02-23",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 29,
+    "tipologia": "Partecipazione collettiva italiana alla Fiera / B2B",
+    "descrizione": "Italia Paese Partner / presenza ENIT",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.986Z",
+    "updated_at": "2025-03-03T09:19:55.986Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 175,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "DESIGN DAY 2025",
+    "data_inizio": "2025-03-17",
+    "data_fine": "2025-03-17",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 20,
+    "tipologia": "Mostra /Conferenza",
+    "descrizione": "Mostra/Conferenza sulle eccellenze di design italiano nel settore dei mobili.",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.992Z",
+    "updated_at": "2025-03-03T09:19:55.992Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 176,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "FIERA DI AGRICOLTURA",
+    "data_inizio": "2025-05-17",
+    "data_fine": "2025-05-22",
+    "paese": "Serbia",
+    "citta": "Novi Sad",
+    "settore": 1,
+    "tipologia": "Partecipazione collettiva italiana alla Fiera",
+    "descrizione": "Stand collettivo prevista la partecipazione di ca. 20 aziende italiane, in collaborazione con FEDERUNACOMA",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:55.997Z",
+    "updated_at": "2025-03-03T09:19:55.997Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 177,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "WINE VISION BY OPEN BALKAN",
+    "data_inizio": "2025-11-22",
+    "data_fine": "2025-11-25",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 8,
+    "tipologia": "Padiglione italiano alla Fiera",
+    "descrizione": "Stand ICE con la sala degustazioni per 50 persone per presentare i vini degli espositori selezionati tramite Vinitaly, Verona Fiere",
+    "public": true,
+    "privatistica": true,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.002Z",
+    "updated_at": "2025-04-02T06:44:32.556Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 178,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "NOTTE DEI VINI ITALIANI",
+    "data_inizio": "2025-11-17",
+    "data_fine": "2025-11-23",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 8,
+    "tipologia": "Mini fiera presso mercato di Palilula",
+    "descrizione": "Stand di importatori distributori di vino e alimenti italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.007Z",
+    "updated_at": "2025-03-03T09:19:56.007Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 179,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "UCIMU STUDY TOUR",
+    "data_inizio": "2025-09-01",
+    "data_fine": "2025-09-05",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 17,
+    "tipologia": "Study tour",
+    "descrizione": "Studio tour per operatori del settore macchine utensili",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.012Z",
+    "updated_at": "2025-03-03T11:05:06.885Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 180,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Mido",
+    "data_inizio": "2024-02-02",
+    "data_fine": "2024-02-05",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 2,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo",
+    "descrizione": "Missione di 2 operatori montengrini. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.017Z",
+    "updated_at": "2025-03-03T09:19:56.017Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 181,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Promozione di Pomodoro di Pachino",
+    "data_inizio": "2024-02-20",
+    "data_fine": "2024-02-22",
+    "paese": "Italia",
+    "citta": "Catania",
+    "settore": 4,
+    "tipologia": "Mostra. Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore montengrino. Incontri B2B e visite aziendali",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.022Z",
+    "updated_at": "2025-03-03T09:19:56.022Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 182,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Sirha Budapest 2024",
+    "data_inizio": "2024-03-05",
+    "data_fine": "2024-03-07",
+    "paese": "Altro",
+    "citta": "Budapest",
+    "settore": 4,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 1 o 2 operatori montenegrini. Visita alla Fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.027Z",
+    "updated_at": "2025-03-28T10:51:07.337Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 183,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Salone nautico di Venezia",
+    "data_inizio": "2024-05-29",
+    "data_fine": "2024-06-02",
+    "paese": "Italia",
+    "citta": "Venezia",
+    "settore": 30,
+    "tipologia": "Fiera Incoming operatori esteri",
+    "descrizione": "Missione di 1 operatore montenegrino. Vista alla fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.032Z",
+    "updated_at": "2025-03-03T09:19:56.032Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 184,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "B2chesse e Terramadre",
+    "data_inizio": "2024-09-25",
+    "data_fine": "2024-09-30",
+    "paese": "Italia",
+    "citta": "Bergamo/Torino",
+    "settore": 4,
+    "tipologia": "Salone formaggio e prodotti alimentari, Incoming",
+    "descrizione": "Missione di 1 operatore montenegrino. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.037Z",
+    "updated_at": "2025-03-28T10:31:23.988Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 185,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Flormart",
+    "data_inizio": "2024-09-25",
+    "data_fine": "2024-09-27",
+    "paese": "Italia",
+    "citta": "Padova",
+    "settore": 13,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 2 operatori montenegrini. Visita alla Fiera e B2B con gli espositori italia",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.042Z",
+    "updated_at": "2025-03-03T09:19:56.042Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 186,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Inout",
+    "data_inizio": "2024-10-09",
+    "data_fine": "2024-10-11",
+    "paese": "Italia",
+    "citta": "Rimini",
+    "settore": 16,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 2 operatori montenegrini. Visita alla fiera e B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.047Z",
+    "updated_at": "2025-03-03T09:19:56.047Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 187,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Lab Innova Study Tour",
+    "data_inizio": "2024-11-05",
+    "data_fine": "2024-11-09",
+    "paese": "Italia",
+    "citta": "Bologna e dintorni",
+    "settore": 18,
+    "tipologia": "Visita alle aziende e alla fiera Eima, macc. agricole",
+    "descrizione": "Missione di 6 operatore montenegrino, visita alle aziende del comparto e alla Fiera Eima 2021",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.052Z",
+    "updated_at": "2025-03-03T09:19:56.052Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 188,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Eima",
+    "data_inizio": "2024-11-06",
+    "data_fine": "2024-11-10",
+    "paese": "Italia",
+    "citta": "Bologna e dintorni",
+    "settore": 18,
+    "tipologia": "Fiera. Incoming a contributo",
+    "descrizione": "Missione di 6 operatori montenegrini. Visita alla fiera e B2B con espositori, su business agenda",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.057Z",
+    "updated_at": "2025-03-03T09:19:56.057Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 189,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Podgorica",
+    "titolo": "Design Day 2024",
+    "data_inizio": "2024-03-21",
+    "data_fine": "2024-03-21",
+    "paese": "Montenegro",
+    "citta": "Podgorica",
+    "settore": 20,
+    "tipologia": "Workshop e mostra",
+    "descrizione": "Workshop su arredi e complementi d'arredo per piccoli spazi domestici, realizzazione di prodotti a impatto zero che consentono il riutilizzo  degli sfridi di produzione. Partner locale: Camera degli ingegneri del Montenegro",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.062Z",
+    "updated_at": "2025-03-03T09:19:56.062Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 190,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Podgorica",
+    "titolo": "Fiera di Agricoltura",
+    "data_inizio": "2024-05-19",
+    "data_fine": "2024-05-22",
+    "paese": "Serbia",
+    "citta": "Novi Sad",
+    "settore": 1,
+    "tipologia": "Fiera. Incoming operatori montenegrini",
+    "descrizione": "Missione di 2 operatori montenegrini. Partecipazione al seminario, visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.067Z",
+    "updated_at": "2025-03-03T09:19:56.067Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 191,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Podgorica",
+    "titolo": "Lab Innova Sud ed East Europa 2024",
+    "data_inizio": "2024-06-04",
+    "data_fine": "2024-06-06",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 4,
+    "tipologia": "Corso di formazione marketing internazionale, tecnologie digitali ed innovative, packaging, sostenibilita'",
+    "descrizione": "Corso per circa 20 operatori totali, di cui 3-4 dal Montenegro: importatori di macchine agricole, produttori o trasformatori di latte, carne, verdure e frutta",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.072Z",
+    "updated_at": "2025-03-03T09:19:56.072Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 192,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Podgorica",
+    "titolo": "Promozione con la Gdo",
+    "data_inizio": "2024-07-01",
+    "data_fine": "2024-08-31",
+    "paese": "Montenegro",
+    "citta": "Podgorica e Budva",
+    "settore": 4,
+    "tipologia": "Follow up Promozione di prodotti italiani con la Gdo",
+    "descrizione": "Promozione di prodotti agroalimentari italiani presso i punti vendita di Podgorica e Budva. Partner locale: Gdo Domaća trgovina e la Facoltà alberghiera Hec di Budva",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.077Z",
+    "updated_at": "2025-03-03T09:19:56.077Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 193,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Podgorica",
+    "titolo": "Settimana della Cucina Italiana nel Mondo",
+    "data_inizio": "2025-11-03",
+    "data_fine": "2025-11-23",
+    "paese": "Montenegro",
+    "citta": "Podgorica",
+    "settore": 4,
+    "tipologia": "Promozione della cucina italiana",
+    "descrizione": "Presentazione di piatti regionali con il coinvolgimento di un Chef italiano e in collaborazione con l'Istituto alberghiero di Roccaraso. Partner locale: Facoltà alberghiera Hec di Budva",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.082Z",
+    "updated_at": "2025-03-03T09:19:56.082Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 194,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Mido",
+    "data_inizio": "2025-02-08",
+    "data_fine": "2025-02-10",
+    "paese": "Italia",
+    "citta": "Milano",
+    "settore": 2,
+    "tipologia": "Fiera. Incoming operatori esteri a contributo con Ies - International Eyewear solutions Srl",
+    "descrizione": "Missione di 1 operatore montenegrino. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.087Z",
+    "updated_at": "2025-03-03T09:19:56.087Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 195,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Vinitaly",
+    "data_inizio": "2025-04-06",
+    "data_fine": "2025-04-09",
+    "paese": "Italia",
+    "citta": "Verona",
+    "settore": 8,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione di 2 operatori montenegrini. Visita alla Fiera, degustazione guidate con consorzi, agenda B2B",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.092Z",
+    "updated_at": "2025-03-03T09:19:56.092Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 196,
+  "fields": {
+    "categoria": "Iniziative promozionali in Italia e all'estero",
+    "office": "Podgorica",
+    "titolo": "Greenitaly",
+    "data_inizio": "2025-10-15",
+    "data_fine": "2025-10-17",
+    "paese": "Italia",
+    "citta": "Parma",
+    "settore": 13,
+    "tipologia": "Fiera. Incoming operatori esteri",
+    "descrizione": "Missione operatori montenegrini. Visita alla Fiera e incontri B2B con gli espositori italiani",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-03T09:19:56.097Z",
+    "updated_at": "2025-03-03T09:19:56.097Z"
+  }
+},
+{
+  "model": "eventi.event",
+  "pk": 197,
+  "fields": {
+    "categoria": "Iniziative promozionali in loco",
+    "office": "Belgrado",
+    "titolo": "Prova",
+    "data_inizio": "2025-03-07",
+    "data_fine": "2025-03-15",
+    "paese": "Serbia",
+    "citta": "Belgrado",
+    "settore": 28,
+    "tipologia": "Study tour",
+    "descrizione": "Una descrizione",
+    "public": true,
+    "privatistica": false,
+    "created_by": 1,
+    "last_updated_by": 1,
+    "created_at": "2025-03-07T08:23:01.190Z",
+    "updated_at": "2025-03-07T08:23:01.190Z"
+  }
+},
+{
+  "model": "eventi.eventfile",
+  "pk": 8,
+  "fields": {
+    "event": 151,
+    "file": "event_files/151/report_20250327_110914.xlsx",
+    "title": "report_20250327_110914",
+    "file_type": "xlsx",
+    "description": "",
+    "created_by": 1,
+    "created_at": "2025-03-27T10:10:27.233Z"
+  }
+}
+]

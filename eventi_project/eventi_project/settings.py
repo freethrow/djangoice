@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 # Load environment variables from .env file
 load_dotenv()
@@ -41,8 +42,8 @@ INSTALLED_APPS = [
     "unfold.contrib.forms",  # optional, if special form elements are needed
     "unfold.contrib.inlines",  # optional, if special inlines are needed
     "unfold.contrib.import_export",  # optional, if django-import-export package is used
-    #"unfold.contrib.guardian",  # optional, if django-guardian package is used
-    #"unfold.contrib.simple_history", 
+    # "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    # "unfold.contrib.simple_history",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -103,6 +104,9 @@ DATABASES = {
     }
 }
 
+DATABASES["default"] = dj_database_url.parse(
+    "postgresql://freethrow:aX9xcrdbZ77ep8UQwQ1wtnErPbnzZpOz@dpg-cvpuqs9r0fns7388pc7g-a.frankfurt-postgres.render.com/djangoice"
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
